@@ -4,7 +4,7 @@ using UnityEngine;
 public class TileBoard : MonoBehaviour
 {
     public Tile tilePrefab;
-    public TileState[] TileStates;
+    public TileState[] tileStates;
     
     private TileGrid grid;
     private List<Tile> tiles;
@@ -14,17 +14,18 @@ public class TileBoard : MonoBehaviour
         grid = GetComponentInChildren<TileGrid>();
         tiles = new List<Tile>(16);
     }
+    
+    private void CreatTile()
+    {
+        Tile tile  = Instantiate(tilePrefab, grid.transform);
+        tile.SetState(tileStates[0], 2);
+    }
 
     private void Start()
     {
         CreatTile();
         CreatTile();
     }
-
-    private void CreatTile()
-    {
-        Tile tile  = Instantiate(tilePrefab, grid.transform);
-        tile.SetState(TileStates[0], 2);
-    }
+    
     
 }
