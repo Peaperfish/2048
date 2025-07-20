@@ -15,17 +15,20 @@ public class TileBoard : MonoBehaviour
         tiles = new List<Tile>(16);
     }
     
-    private void CreatTile()
-    {
-        Tile tile  = Instantiate(tilePrefab, grid.transform);
-        tile.SetState(tileStates[0], 2);
-    }
-
     private void Start()
     {
         CreatTile();
         CreatTile();
     }
+
     
+    private void CreatTile()
+    {
+        Tile tile  = Instantiate(tilePrefab, grid.transform);
+        tile.SetState(tileStates[0], 2);
+        tile.Spawn(grid.GetRandomEmptyCell());
+    }
+
+
     
 }
